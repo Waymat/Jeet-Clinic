@@ -5,6 +5,7 @@ export default function Prescription() {
   const [prefix, setPrefix] = useState("Mr.");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [bloodGroup, setBloodGroup] = useState("")
   const [date, setDate] = useState(() =>
     new Date().toISOString().slice(0, 10)
   );
@@ -40,72 +41,147 @@ export default function Prescription() {
 
       {/* Patient info row (Mr/Mrs, Name, Age, Date) */}
       <div className="row g-2 align-items-end mb-2">
-        <div className="col-md-5 d-flex gap-2">
-          <div>
-            <label className="form-label mb-1 small">Title</label>
-            <select
-              className="form-select form-select-sm"
-              value={prefix}
-              onChange={(e) => setPrefix(e.target.value)}
-            >
-              <option>Mr.</option>
-              <option>Mrs.</option>
-              <option>Ms.</option>
-              <option>Master</option>
-            </select>
-          </div>
-          <div className="flex-grow-1">
-            <label className="form-label mb-1 small">Patient Name</label>
-            <input
-              className="form-control form-control-sm"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Full Name"
-            />
-          </div>
-        </div>
-        <div className="col-md-3">
-          <label className="form-label mb-1 small">Age</label>
-          <input
-            className="form-control form-control-sm"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            placeholder="Years"
-          />
-        </div>
-        <div className="col-md-4">
-          <label className="form-label mb-1 small">Date</label>
-          <input
-            type="date"
-            className="form-control form-control-sm"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
-      </div>
+  {/* Title + Patient Name */}
+  <div className="col-md-6 d-flex gap-2">
+    <div className="text-start">
+      <label className="form-label mb-1 small d-block">Title</label>
+      <select
+        className="form-select form-select-sm"
+        value={prefix}
+        onChange={(e) => setPrefix(e.target.value)}
+      >
+        <option>Mr.</option>
+        <option>Mrs.</option>
+        <option>Ms.</option>
+        <option>Master</option>
+      </select>
+    </div>
+
+    <div className="col-md-10 text-start">
+      <label className="form-label mb-1 small d-block">Patient Name</label>
+      <input
+        className="form-control form-control-sm"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Full Name"
+      />
+    </div>
+  </div>
+
+  {/* Age */}
+  <div className="col-md-2 text-start">
+    <label className="form-label mb-1 small d-block">Age</label>
+    <input
+      className="form-control form-control-sm"
+      value={age}
+      onChange={(e) => setAge(e.target.value)}
+      placeholder="Years"
+    />
+  </div>
+
+  {/* Blood Group */}
+  <div className="col-md-2 text-start">
+    <label className="form-label mb-1 small d-block">Blood Group</label>
+    <select
+      className="form-select form-select-sm"
+      value={bloodGroup}
+      onChange={(e) => setBloodGroup(e.target.value)}
+    >
+      <option>Select</option>
+      <option>A+</option>
+      <option>A-</option>
+      <option>B+</option>
+      <option>B-</option>
+      <option>O+</option>
+      <option>O-</option>
+      <option>AB+</option>
+      <option>AB-</option>
+    </select>
+  </div>
+
+  {/* Date */}
+  <div className="col-md-2 text-start">
+    <label className="form-label mb-1 small d-block">Date</label>
+    <input
+      type="date"
+      className="form-control form-control-sm"
+      value={date}
+      onChange={(e) => setDate(e.target.value)}
+    />
+  </div>
+</div>
+
 
       {/* Body */}
       <div className="row g-0">
         {/* Left column */}
-        <div className="col-4 pe-3 border-end" style={{ minHeight: 420 }}>
-          <p className="mb-2">B.P. : ........................................</p>
-          <p className="mb-2">Temp : ......................................</p>
-          <p className="mb-2">B.S.R : .......................................</p>
-          <p className="mb-2">SpO2 : ......................................</p>
-          <p className="mb-2">Pulse : ......................................</p>
-          <p className="mb-2">Weight : ....................................</p>
+<div className="col-4 pe-3 border-end" style={{ minHeight: 420 }}>
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">B.P. :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter BP"
+    />
+  </div>
 
-          <p className="text-danger fw-bold mt-3 mb-1">Test Advised</p>
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">Temp :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter Temp"
+    />
+  </div>
 
-          {/* EDITABLE AREA #1 */}
-          <textarea
-            className="form-control"
-            rows={10}
-            placeholder="Write advised tests here…"
-            value={tests}
-            onChange={(e) => setTests(e.target.value)}
-          />
-        </div>
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">B.S.R :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter BSR"
+    />
+  </div>
+
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">SpO2 :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter SpO2"
+    />
+  </div>
+
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">Pulse :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter Pulse"
+    />
+  </div>
+
+  <div className="mb-2 d-flex align-items-center">
+    <span className="me-2 fw-semibold">Weight :</span>
+    <input
+      type="text"
+      className="flex-grow-1 border-0 border-bottom"
+      placeholder="Enter Weight"
+    />
+  </div>
+
+  <p className="text-danger fw-bold mt-3 mb-1">Test Advised</p>
+
+  {/* EDITABLE AREA #1 */}
+  <textarea
+    className="form-control"
+    rows={10}
+    placeholder="Write advised tests here…"
+    value={tests}
+    onChange={(e) => setTests(e.target.value)}
+  />
+</div>
+
 
         {/* Right column */}
         <div className="col-8 ps-3" style={{ minHeight: 420 }}>
