@@ -6,21 +6,26 @@
   padding: 1cm;
   margin: auto;
   box-sizing: border-box;
+  overflow: hidden; 
 }
 
 /* Print styles */
 @media print {
-  body {
+  body,html {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     margin: 0;
     padding: 0;
   }
 
-  .a4-sheet {
-    page-break-after: always;
-    width: 21cm !important;
-    min-height: 29.7cm !important;
+   .a4-sheet {
+    page-break-after: avoid;  /* Avoid breaking after this div */
+    page-break-before: auto;
+    page-break-inside: avoid; /* Avoid breaking inside */
+    width: 210mm;  /* A4 width */
+    min-height: 297mm; /* A4 height */
+    margin: 0 auto;  /* Centering */
+    box-shadow: none; /* Remove shadow when printing */
   }
 
   /* Force row to behave properly */
@@ -64,5 +69,5 @@
   padding-bottom: 0 !important;
 }
 .footer-section p {
-  white-space: nowrap;  /* Prevents breaking into next line */
+  white-space: nowrap; 
 }
