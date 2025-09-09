@@ -180,43 +180,52 @@ export default function Prescription() {
         </div>
 
         {/* Footer */}
-        <div className="text-center border-top mt-3 pt-2 footer-section">
-          <span className="badge bg-danger mb-3 fs-4">24x7 Open Emergency</span>
+<div className="text-center border-top mt-3 pt-2 footer-section gap-2">
+  <span className="badge bg-danger mb-3 fs-4">24x7 Open Emergency</span>
 
-          <div className="row text-center text-danger align-items-start mt-4 gap-5">
-            {/* First Clinic */}
-            <div className="col-4 fw-bold">
-              <h6 className="fw-bold">First Clinic :-</h6>
-              <p className="mb-1">474 Dabua Tyagi Market</p>
-              <p className="mb-1">NIT Faridabad - 121001</p>
-              <br />
-              <p className="mb-1">Clinic Timing</p>
-              <p className="mb-1">Morning 10:30 to 2.00 P.m.</p>
-              <p className="mb-1">Evening 6.00 P.m. to 10.00 P.m.</p>
-            </div>
+  <div className="row text-center text-danger align-items-center gap-5 mt-4">
+    {/* First Clinic */}
+    <div className="col-4 text-center fw-bold text-start">
+      <h6 className="fw-bold">First Clinic :-</h6>
+      <p className="mb-1">474 Dabua Tyagi Market</p>
+      <p className="mb-1">NIT Faridabad - 121001</p>
+      <br />
+      <p className="mb-1">Clinic Timing</p>
+      <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
+        Morning 10:30 to 2.00 P.m.
+      </p>
+      <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
+        Evening 6.00 P.m. to 10.00 P.m.
+      </p>
+    </div>
 
-            {/* Second Clinic */}
-            <div className="col-4 fw-bold">
-              <h6 className="fw-bold">Second Clinic :-</h6>
-              <p className="mb-1">719 New Janta Colony</p>
-              <p className="mb-1">NIT Faridabad - 121001</p>
-              <br />
-              <p className="mb-1">Clinic Timing</p>
-              <p className="mb-1">Morning 08:30 to 10.30 A.m.</p>
-              <p className="mb-1">Evening 4.00 P.m. to 6.00 P.m.</p>
-            </div>
+    {/* Second Clinic */}
+    <div className="col-4 text-center fw-bold text-start">
+      <h6 className="fw-bold">Second Clinic :-</h6>
+      <p className="mb-1">719 New Janta Colony</p>
+      <p className="mb-1">NIT Faridabad - 121001</p>
+      <br />
+      <p className="mb-1">Clinic Timing</p>
+      <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
+        Morning 08:30 to 10.30 A.m.
+      </p>
+      <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
+        Evening 4.00 P.m. to 6.00 P.m.
+      </p>
+    </div>
 
-            {/* Map Image */}
-            <div className="col-4">
-              <img
-                src={map}
-                alt="Clinic Location Map"
-                // className="img-fluid rounded shadow"
-                style={{ maxHeight: "250px" }}
-              />
-            </div>
-          </div>
-        </div>
+    {/* Map Image */}
+    <div className="col-4 d-flex justify-content-center">
+      <img
+        src={map}
+        alt="Clinic Location Map"
+        // className="img-fluid rounded shadow"
+        style={{ maxHeight: "250px", objectFit: "contain" }}
+      />
+    </div>
+  </div>
+</div>
+
 
       </div>
       {/* Print Button */}
