@@ -1,0 +1,68 @@
+/* A4 Sheet Size */
+.a4-sheet {
+  width: 21cm;
+  min-height: 29.7cm;
+  background: #fff;
+  padding: 1cm;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+/* Print styles */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  .a4-sheet {
+    page-break-after: always;
+    width: 21cm !important;
+    min-height: 29.7cm !important;
+  }
+
+  /* Force row to behave properly */
+  .row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Patient info row fix */
+  .patient-info .col-title {
+    width: 12% !important;   /* Title */
+  }
+  .patient-info .col-name {
+    width: 36% !important;   /* Patient Name */
+  }
+  .patient-info .col-age {
+    width: 12% !important;   /* Age */
+  }
+  .patient-info .col-blood {
+    width: 20% !important;   /* Blood Group */
+  }
+  .patient-info .col-date {
+    width: 20% !important;   /* Date */
+  }
+
+  /* Left + Right columns */
+  .col-4 {
+    width: 30% !important;
+  }
+  .col-8 {
+    width: 70% !important;
+  }
+
+  .d-print-none {
+    display: none !important;
+  }
+}
+
+.footer-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.footer-section p {
+  white-space: nowrap;  /* Prevents breaking into next line */
+}
