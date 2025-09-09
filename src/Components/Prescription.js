@@ -211,8 +211,8 @@ export default function Prescription() {
               <img
                 src={map}
                 alt="Clinic Location Map"
-                className="img-fluid rounded shadow"
-                style={{ maxHeight: "180px" }}
+                // className="img-fluid rounded shadow"
+                style={{ maxHeight: "250px" }}
               />
             </div>
           </div>
