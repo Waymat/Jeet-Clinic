@@ -43,7 +43,7 @@ export default function Prescription() {
 
             <div className="text-end">
               <img
-                alt="logo-right"
+                alt="logo-pending"
                 src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Caduceus.svg"
                 style={{ width: 40, height: 40 }}
               />
