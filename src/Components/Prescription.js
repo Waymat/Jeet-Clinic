@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Prescription.css"; // custom CSS for A4 layout
 import logo from "../Images/JeetClinic.png";
-import map from "../Images/map.jpg";
+import map from "../Images/map.png";
 import { db, auth } from "./firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
@@ -102,12 +102,24 @@ export default function Prescription() {
     });
     alert("Prescription saved!");
     fetchSuggestions(); // refresh suggestions after saving
+    handleNewPrescription();
   };
 
   // Print function
   const handlePrint = () => {
     window.print();
   };
+
+  const handleNewPrescription = () => {
+  setPrefix("Mr.");
+  setName("");
+  setAge("");
+  setBloodGroup("");
+  setDate(new Date().toISOString().slice(0, 10));
+  setTests("");
+  setNotes("");
+};
+
 
   return (
     <div className="d-flex flex-column align-items-center" >
@@ -129,11 +141,6 @@ export default function Prescription() {
               </small>
             </div>
             <div className="text-end">
-              <img
-                alt="logo-pending"
-                src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Caduceus.svg"
-                style={{ width: 40, height: 40 }}
-              />
               <div className="small">
                 M : <strong>9211699737</strong>
               </div>
@@ -228,7 +235,7 @@ export default function Prescription() {
                   type="text"
                   className="form-control form-control-sm border-0 border-bottom"
                   placeholder={field.placeholder}
-                  style={{ maxWidth: "120px" }}
+                  style={{ maxWidth: "120px", color:"black" }}
                 />
               </div>
             ))}
@@ -242,51 +249,72 @@ export default function Prescription() {
               placeholder="Write advised tests here…"
               value={tests}
               onChange={(e) => setTests(e.target.value)}
+              style={{color: "black"}}
             />
           </div>
 
           {/* Right column */}
           <div className="col-8 ps-3" style={{ minHeight: 300 }}>
             {/* Prescription / Notes textarea */}
-            <div style={{ position: 'relative', width: '100%' }}>
+            <div className="textarea-container textarea-wrapper" style={{ position: 'relative', width: '100%' }}>
               <textarea
                 ref={notesRef}
                 name="notes"
-                className="form-control"
+                className="form-control textarea-watermark"
                 rows={17}
                 placeholder="Prescription / Notes…"
                 value={notes}
                 onChange={handleNotesChange}
-                style={{ height: "100%" }}
+                style={{ height: "100%",color: "black",}}
               />
               {/* Suggestions dropdown will go here */}
             </div>
 
             {/* Suggestions */}
-            {suggestions.length > 0 && (
-              <select
-                className="form-select"
-                size={Math.min(5, suggestions.length)}
-                style={{
-                  width:"200px",
-                  position: 'absolute',
-                  left: '70%',
-                  right: '30%',
-                  top: '90%',          // Positions dropdown just below textarea
-                  zIndex: 1000          // Ensures it sits above other elements
-                }}
-                onChange={e => {
-                  insertAtCursor(e.target.value);
-                  setSuggestions([]);
-                }}
-              >
-                {suggestions.map((s, i) => (
-                  <option key={i} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            )}
+            {suggestions.length === 1 ? (
+  <div
+    className="border bg-white p-2"
+    style={{
+      width:"200px",
+      position: 'absolute',
+      left: '70%',
+      right: '30%',
+      top: '90%',
+      zIndex: 1000,
+      cursor: "pointer"
+    }}
+    onClick={() => {
+      insertAtCursor(suggestions[0]);
+      setSuggestions([]);
+    }}
+  >
+    {suggestions[0]}
+  </div>
+) : suggestions.length > 1 && (
+  <select
+    className="form-select"
+    size={Math.min(5, suggestions.length)}
+    style={{
+      width:"200px",
+      position: 'absolute',
+      left: '70%',
+      right: '30%',
+      top: '90%',
+      zIndex: 1000
+    }}
+    onChange={e => {
+      insertAtCursor(e.target.value);
+      setSuggestions([]);
+    }}
+  >
+    {suggestions.map((s, i) => (
+      <option key={i} value={s}>
+        {s}
+      </option>
+    ))}
+  </select>
+)}
+
 
 
           </div>
@@ -350,7 +378,7 @@ export default function Prescription() {
         className="btn btn-success my-3 d-print-none"
         onClick={handleSave}
       >
-        Save Prescription
+        Save & New Prescription
       </button>
     </div>
   );

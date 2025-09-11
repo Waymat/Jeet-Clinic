@@ -71,3 +71,30 @@
 .footer-section p {
   white-space: nowrap; 
 }
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.textarea-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: url('../Images/JeetClinic.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.2; /* sirf logo faint dikhe */
+  pointer-events: none;
+}
+
+.textarea-watermark {
+  position: relative;
+  width: 100%;
+  color: black;
+  background: transparent; /* logo visible rahe */
+  z-index: 1;
+}
+
