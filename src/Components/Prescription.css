@@ -3,7 +3,7 @@
   width: 21cm;
   min-height: 29.7cm;
   background: #fff;
-  padding: 1cm;
+  padding: 1cm 1cm 0 1cm;
   margin: auto;
   box-sizing: border-box;
   overflow: hidden; 
@@ -82,8 +82,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   background: url('../Images/JeetClinic.png') no-repeat center center;
   background-size: contain;
   opacity: 0.2; /* sirf logo faint dikhe */
@@ -97,4 +97,36 @@
   background: transparent; /* logo visible rahe */
   z-index: 1;
 }
+
+
+.footer-section {
+  padding-top: 6px; /* small safe padding */
+}
+
+@media print {
+  .footer-section {
+    margin-top: 2px !important;
+    padding-top: 2px !important;
+  }
+
+  .footer-section p,
+  .footer-section h6 {
+    margin-bottom: 2px !important; /* text ke neeche ka gap chhota */
+  }
+
+  .footer-section br {
+    display: none; /* jo extra <br /> lagaye ho wo hata do */
+  }
+
+  .footer-section .row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .a4-sheet {
+    page-break-inside: avoid; /* footer alag page pe na jaye */
+  }
+}
+
+
 

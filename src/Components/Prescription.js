@@ -245,7 +245,7 @@ export default function Prescription() {
             {/* Tests textarea */}
             <textarea
               className="form-control"
-              rows={6}
+              rows={9}
               placeholder="Write advised tests here…"
               value={tests}
               onChange={(e) => setTests(e.target.value)}
@@ -261,7 +261,7 @@ export default function Prescription() {
                 ref={notesRef}
                 name="notes"
                 className="form-control textarea-watermark"
-                rows={17}
+                rows={20}
                 placeholder="Prescription / Notes…"
                 value={notes}
                 onChange={handleNotesChange}
@@ -321,7 +321,7 @@ export default function Prescription() {
         </div>
 
         {/* Footer */}
-        <div className="text-center border-top mt-3 pt-2 footer-section gap-2">
+        <div className="text-center border-top footer-section">
           <span className="badge bg-danger mb-3 fs-4">24x7 Open Emergency</span>
           <div className="row text-center text-danger align-items-center gap-4 ">
             {/* First Clinic */}
@@ -329,7 +329,7 @@ export default function Prescription() {
               <h6 className="fw-bold">First Clinic :-</h6>
               <p className="mb-1">474 Dabua Tyagi Market</p>
               <p className="mb-1">NIT Faridabad - 121001</p>
-              <br />
+              <br/>
               <p className="mb-1">Clinic Timing</p>
               <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
                 Morning 10:30 to 2.00 P.m.
@@ -344,7 +344,7 @@ export default function Prescription() {
               <h6 className="fw-bold">Second Clinic :-</h6>
               <p className="mb-1">719 New Janta Colony</p>
               <p className="mb-1">NIT Faridabad - 121001</p>
-              <br />
+              <br/>
               <p className="mb-1">Clinic Timing</p>
               <p className="mb-1" style={{ whiteSpace: "nowrap" }}>
                 Morning 08:30 to 10.30 A.m.
@@ -359,7 +359,7 @@ export default function Prescription() {
               <img
                 src={map}
                 alt="Clinic Location Map"
-                style={{ maxHeight: "250px", objectFit: "contain" }}
+                style={{ maxHeight: "300px", objectFit: "contain" }}
               />
             </div>
           </div>
@@ -369,17 +369,19 @@ export default function Prescription() {
       {/* Buttons */}
       <button
         className="btn btn-danger my-3 d-print-none"
-        onClick={handlePrint}
+        onClick={()=>{handlePrint()
+          handleSave()
+        }}
       >
         Print Prescription
       </button>
 
-      <button
+      {/* <button
         className="btn btn-success my-3 d-print-none"
         onClick={handleSave}
       >
         Save & New Prescription
-      </button>
+      </button> */}
     </div>
   );
 }
