@@ -258,15 +258,22 @@ export default function Prescription() {
             {/* Prescription / Notes textarea */}
             <div className="textarea-container textarea-wrapper" style={{ position: 'relative', width: '100%' }}>
               <textarea
-                ref={notesRef}
-                name="notes"
-                className="form-control textarea-watermark"
-                rows={20}
-                placeholder="Prescription / Notes…"
-                value={notes}
-                onChange={handleNotesChange}
-                style={{ height: "100%",color: "black",}}
-              />
+  ref={notesRef}
+  name="notes"
+  className="form-control"
+  rows={20}
+  value={notes.startsWith("Rx\n") ? notes : "Rx\n" + notes}
+  onChange={(e) => {
+    let val = e.target.value;
+    // Always enforce Rx at the start
+    if (!val.startsWith("Rx\n")) {
+      val = "Rx\n" + val.replace(/^Rx\s*/, "");
+    }
+    handleNotesChange({ target: { value: val } });
+  }}
+  style={{ height: "100%", color: "black" }}
+/>
+
               {/* Suggestions dropdown will go here */}
             </div>
 
