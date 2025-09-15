@@ -18,6 +18,8 @@ export default function Prescription() {
   const [tests, setTests] = useState("");
   const [notes, setNotes] = useState("");
   const notesRef = useRef(null);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 
   // Suggestions states
   const [allNotes, setAllNotes] = useState([]);
@@ -374,14 +376,47 @@ export default function Prescription() {
       </div>
 
       {/* Buttons */}
-      <button
+
+      {isMobile ? (
+  <>
+    {/* On Mobile → Two Buttons */}
+    <button
+      className="btn btn-primary my-3 d-print-none"
+      onClick={handleSave}
+    >
+      Save Prescription
+    </button>
+
+    <button
+      className="btn btn-danger my-3 d-print-none"
+      onClick={handlePrint}
+    >
+      Print Prescription
+    </button>
+  </>
+) : (
+  /* On Desktop → Single Button (Save + Print) */
+  <button
+    className="btn btn-danger my-3 d-print-none"
+    onClick={() => {
+      handleSave();
+      setTimeout(() => {
+        handlePrint();
+      }, 300); // delay so alert doesn't block print
+    }}
+  >
+    Save & Print Prescription
+  </button>
+)}
+
+      {/* <button
         className="btn btn-danger my-3 d-print-none"
         onClick={()=>{handlePrint()
           handleSave()
         }}
       >
         Print Prescription
-      </button>
+      </button> */}
 
       {/* <button
         className="btn btn-success my-3 d-print-none"
