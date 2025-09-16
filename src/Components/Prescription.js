@@ -402,7 +402,7 @@ export default function Prescription() {
       handleSave();
       setTimeout(() => {
         handlePrint();
-      }, 300); // delay so alert doesn't block print
+    }); // delay so alert doesn't block print
     }}
   >
     Save & Print Prescription
